@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="https://www.onymos.com/products/access"
+		id="onymos-component-initialize"
+		version="2.1.0">
+
+		<name>OnymosInitializeComponent</name>
+		<description>Onymos Initialize Component</description>
+		<license>Onymos Inc</license>
+		<keywords>Onymos, Hybrid, Access, User, Risk, Rules</keywords>
+
+		<js-module src="www/OnymosInitialize.min.js" name="OnymosInitialize">
+			<clobbers target="OnymosInitialize" />
+		</js-module>
+
+		<!-- android -->
+		<platform name="android">
+			<config-file target="res/xml/config.xml" parent="/*">
+				<feature name="OnymosInitialize">
+						<param name="android-package" value="com.onymos.components.initialize.OnymosInitializeManager"/>
+				</feature>
+			</config-file>
+
+			<source-file	src="src/android/OnymosInitializeManager.java"
+										target-dir="src/com/onymos/components/initialize" />
+		</platform>
+
+		<!-- ios -->
+		<platform name="ios">
+			<config-file target="config.xml" parent="/*">
+				<feature name="OnymosInitialize">
+					<param name="ios-package" value="OnymosInitializeManager" />
+				</feature>
+			</config-file>
+
+			<header-file src="src/ios/OnymosInitializeManager.h" />
+			<source-file src="src/ios/OnymosInitializeManager.m" />
+		</platform>
+
+</plugin>
